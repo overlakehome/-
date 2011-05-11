@@ -1,0 +1,59 @@
+h4. to jumpstart this '-' git repo into a local repo of @your choices@.
+
+# @git config --global user.name@ @"Jeongim Bae"@
+# @git config --global user.email@ [@overlakehome@gmail.com@]
+# @git clone git://github.com/0ishi/-.git@ @main@
+# @cd@ %{color:blue}@-@% # change directory into your local repository.
+
+h4. to get to normal workflow of edit, revert, cache, commit, and push to remote.
+
+# (edit files)
+# status of your local changes (optional), e.g. @git status@
+# discard your local changes (optional), e.g. @git checkout .@
+# put changes to cache (also called index), e.g. @git add src/main.cs@
+# get rid of changes out of cache (optional), e.g. @git reset src/main.java@
+# diff --cached before commit, e.g. @git diff --cached@
+# commit changes from cache, e.g. @git commit -m 'added main.cs.'@ 
+# push to remote git repo, e.g. [@git push git@github.com:0ishi/-.git@]
+# pull from remote git repo (optional), e.g. @git pull@
+# merge conflicting changes (optional), e.g. @git mergetool@
+
+h4. to shortcut most common git commands using your favorite shell aliases.
+
+<pre>
+alias gst='git status' # status of changes
+alias gco='git checkout' # revert changes
+alias gdf='git diff' # changes in the working tree not yet staged for the next commit.
+alias gdfcached='git diff --cached' # Changes between the staged index and the last commit.
+alias gdfhead='git diff HEAD' # changes in the working tree since the last commit.
+alias gad='git add' # into cache
+alias gci='git commit' # commit
+alias grs='git reset' # out of cache
+alias gps='git push' # push
+alias gpl='git pull' # pull
+alias github='cd /Users/overlakehome/github/' # on mac osx
+alias main='cd /Users/overlakehome/github/main/' # on mac osx
+</pre>
+
+h4. to produce colorful output with git commands.
+
+<pre>
+git config --global color.diff auto
+git config --global color.status auto
+git config --global color.branch auto
+</pre>
+
+h4. "to configure p4merge & p4diff":http://www.andymcintosh.com/?p=33, ~/.gitconfig (git config file) needs these lines:
+
+<pre>
+[merge]
+    keepBackup = false;
+    tool = p4merge
+[mergetool "p4merge"]
+    cmd = p4merge "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
+    keepTemporaries = false
+    trustExitCode = false
+    keepBackup = false
+[diff]
+    external = p4diff
+</pre>
